@@ -50,28 +50,21 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
 .row.delisted .c-title::after { content:" [下架]"; font-size:10px; color:#c66; }
 
 /* ===== 移动端适配 ===== */
+#listscroll { overflow-x: auto; }  /* 列表横向翻阅 */
 @media (max-width: 900px) {
   #main { flex-direction: column; }
   #filters { width: 100%; flex: none; border-right: none; border-bottom: 1px solid #ddd;
              display: flex; flex-wrap: wrap; gap: 4px; padding: 6px; max-height: 180px; overflow-y: auto; }
   .fgroup { margin-bottom: 2px; display: flex; align-items: center; gap: 4px; }
   .fgroup b { margin: 0; white-space: nowrap; }
+  #listwrap { width: 100%; }
+  #listheader, .row { min-width: 580px; }  /* 不压缩,窄屏横向滚动看全部列 */
   #listbody { height: calc(100vh - 340px); }
-}
-@media (max-width: 600px) {
-  h1 { font-size: 13px; padding: 6px 8px; }
+  h1 { font-size: 14px; }
   h1 small { display: none; }
-  #listheader, .row { grid-template-columns: 1fr 50px minmax(50px,1fr) 30px; }
-  .c-exp, .c-ult { display: none; }
-  .band .bname { font-size: 7px; }
-  #filters { font-size: 12px; }
+  .band .bname { font-size: 8px; }
   .row { height: 36px; }
-  #listbody { height: calc(100vh - 300px); }
   #tlctrl .legend { display: none; }
   #tlctrl { gap: 4px; }
   #tlctrl button { padding: 4px 6px; font-size: 12px; }
-}
-@media (max-width: 400px) {
-  #listheader, .row { grid-template-columns: 1fr 44px 26px; }
-  .c-trail { display: none; }
 }

@@ -61,7 +61,7 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
   #listheader, .row { min-width: 580px; }  /* 不压缩,窄屏横向滚动看全部列 */
   h1 { font-size: 14px; }
   h1 small { display: none; }
-  .band .bname { font-size: 8px; }
+  .band .bname { display: none; }
   .row { height: 36px; }
   #tlctrl .legend { display: none; }
   #tlctrl { gap: 4px; }

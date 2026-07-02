@@ -236,8 +236,9 @@ function togglePlay(){
 $("missing-note").id = "missing-note";
 const _total = DATA.length;
 const _withHist = DATA.filter(s => s.charts && Object.keys(s.charts).length).length;
-$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。`;
+$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。 <b>v0702b</b>`;
 buildBands();
 setupEvents();
-state.snap = $("snap").checked;   // 同步勾选状态(默认开)，否则加载时不吸附
-requestAnimationFrame(() => setDate(MAX_DATE));   // 等CSS布局完成再首次渲染
+state.snap = $("snap").checked;
+setDate(MAX_DATE);
+window.addEventListener("load", () => renderList());   // CSS全部加载后重渲染,修复首屏5首

@@ -31,8 +31,8 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
 #listheader { position:sticky; top:0; background:#ececf2; border-bottom:2px solid #bbb; font-size:11px; font-weight:bold; color:#445; z-index:2; }
 #listheader>div { padding:5px 6px; }
 #listheader .c-exp{color:#d92121;} #listheader .c-mas{color:#75a} #listheader .c-ult{color:#1a1a1a}
-#listbody { position:relative; height:calc(100vh - 220px); overflow-y:auto; overflow-x:hidden; }
-.row { height:30px; border-bottom:1px solid #eee; position:absolute; left:0; right:0; }
+#listbody { position:relative; }
+.row { height:30px; border-bottom:1px solid #eee; }
 .row:hover { background:#eef5ff; }
 .row .c-title { padding:0 8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; cursor:pointer; }
 .row .c-exp,.row .c-mas,.row .c-ult { text-align:left; padding-left:8px; font-variant-numeric:tabular-nums; }
@@ -50,7 +50,7 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
 .row.delisted .c-title::after { content:" [下架]"; font-size:10px; color:#c66; }
 
 /* ===== 移动端适配 ===== */
-#listscroll { overflow-x: auto; }  /* 列表横向翻阅 */
+#listscroll { overflow:auto; max-height:calc(100vh - 220px); -webkit-overflow-scrolling:touch; }
 @media (max-width: 900px) {
   #main { flex-direction: column; }
   #filters { width: 100%; flex: none; border-right: none; border-bottom: 1px solid #ddd;
@@ -59,7 +59,6 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
   .fgroup b { margin: 0; white-space: nowrap; }
   #listwrap { width: 100%; }
   #listheader, .row { min-width: 580px; }  /* 不压缩,窄屏横向滚动看全部列 */
-  #listbody { height: calc(100vh - 340px); }
   h1 { font-size: 14px; }
   h1 small { display: none; }
   .band .bname { font-size: 8px; }

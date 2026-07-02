@@ -111,14 +111,15 @@ function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").rep
 function renderList(){
   const list = computeList();
   renderStatus(list);
+  const scrollEl = $("listscroll");
   const body = $("listbody");
-  const top = body.scrollTop, h = body.clientHeight;
+  const top = scrollEl.scrollTop, h = scrollEl.clientHeight;
   const start = Math.max(0, Math.floor(top/ROW_H) - 4);
   const end = Math.min(list.length, Math.ceil((top+h)/ROW_H) + 4);
   const gen = genAtDate(state.date);
-  body.innerHTML = `<div style="height:${list.length*ROW_H}px;position:relative">` +
-    list.slice(start,end).map((s,i)=>`<div style="position:absolute;top:${(start+i)*ROW_H}px;left:0;right:0">${innerRow(s,gen)}</div>`).join("") +
-    `</div>`;
+  body.style.paddingTop = (start * ROW_H) + "px";
+  body.style.paddingBottom = (Math.max(0, list.length - end) * ROW_H) + "px";
+  body.innerHTML = list.slice(start, end).map(s => innerRow(s, gen)).join("");
 }
 function diffCell(s, diff, d, gen){
   const c = constAt(s,diff,d);
@@ -192,7 +193,7 @@ function setupEvents(){
     $(id).addEventListener("input", render);
     $(id).addEventListener("change", render);
   });
-  $("listbody").addEventListener("scroll", renderList);
+  $("listscroll").addEventListener("scroll", renderList);
   // 行：hover 全名 tooltip / 点击复制
   document.addEventListener("mouseover", e=>{
     const t = e.target.closest("[data-full]");

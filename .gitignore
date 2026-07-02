@@ -5,3 +5,15 @@ __pycache__/
 *.zip
 *.tar
 *.output
+.claude/
+背景知识.md
+代际列表.txt
+测试用曲目.txt
+抓取样例.md
+早期下架曲-定数不明.md
+应用设计文档.md
+应用设计建议.txt
+MATE代相关工作.txt
+定数时光机.html
+使用说明.txt
+app_backup/

@@ -13,7 +13,7 @@ h1 { font-size:16px; margin:0; padding:8px 12px; background:#222; color:#fff; }
 h1 small { font-size:11px; color:#bbb; font-weight:normal; margin-left:8px; }
 
 #timeline { background:#fff; border-bottom:1px solid #ddd; padding:8px 12px; }
-#genbands { display:flex; height:30px; border:1px solid #ccc; border-radius:4px; overflow:hidden; cursor:pointer; position:relative; user-select:none; -webkit-user-select:none; }
+#genbands { display:flex; height:30px; border:1px solid #ccc; border-radius:4px; overflow:hidden; cursor:pointer; position:relative; user-select:none; -webkit-user-select:none; touch-action:none; }
 .band { height:100%; display:flex; align-items:center; justify-content:center; font-size:10px; color:#333; border-right:1px solid rgba(0,0,0,.08); overflow:hidden; white-space:nowrap; transition:filter .1s; }
 .band:hover { filter:brightness(.92); }
 #tlhandle { position:absolute; top:0; bottom:0; width:3px; background:#111; left:0; pointer-events:none; z-index:5; box-shadow:0 0 0 1px #fff, 0 0 4px rgba(0,0,0,.6); }
@@ -57,6 +57,33 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
 #copied { position:fixed; background:#0a0; color:#fff; padding:4px 10px; border-radius:4px; font-size:12px; display:none; z-index:101; }
 .row.delisted .c-title { color:#999; }
 .row.delisted .c-title::after { content:" [下架]"; font-size:10px; color:#c66; }
+
+/* ===== 移动端适配 ===== */
+@media (max-width: 900px) {
+  #main { flex-direction: column; }
+  #filters { width: 100%; flex: none; border-right: none; border-bottom: 1px solid #ddd;
+             display: flex; flex-wrap: wrap; gap: 4px; padding: 6px; max-height: 180px; overflow-y: auto; }
+  .fgroup { margin-bottom: 2px; display: flex; align-items: center; gap: 4px; }
+  .fgroup b { margin: 0; white-space: nowrap; }
+  #listbody { height: calc(100vh - 340px); }
+}
+@media (max-width: 600px) {
+  h1 { font-size: 13px; padding: 6px 8px; }
+  h1 small { display: none; }
+  #listheader, .row { grid-template-columns: 1fr 50px minmax(50px,1fr) 30px; }
+  .c-exp, .c-ult { display: none; }
+  .band .bname { font-size: 7px; }
+  #filters { font-size: 12px; }
+  .row { height: 36px; }
+  #listbody { height: calc(100vh - 300px); }
+  #tlctrl .legend { display: none; }
+  #tlctrl { gap: 4px; }
+  #tlctrl button { padding: 4px 6px; font-size: 12px; }
+}
+@media (max-width: 400px) {
+  #listheader, .row { grid-template-columns: 1fr 44px 26px; }
+  .c-trail { display: none; }
+}
 
 </style>
 </head>

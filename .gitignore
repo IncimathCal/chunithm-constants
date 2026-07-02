@@ -1,0 +1,7 @@
+tools/
+app_backup/
+__pycache__/
+*.pyc
+*.zip
+*.tar
+*.output

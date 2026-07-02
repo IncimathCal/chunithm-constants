@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(curl -sS -L --compressed --max-time 40 -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36\" 'https://wikiwiki.jp/chunithmwiki/%E6%B7%B7%E6%B2%8C%E3%82%92%E8%B6%8A%E3%81%88%E3%81%97%E6%88%91%E3%82%89%E3%81%8C%E7%A5%9E%E8%81%96%E3%81%AA%E3%82%8B%E8%AA%BF%E5%BE%8B%E4%B8%BB%E3%82%92%E8%AD%98%E3%81%88%E3%82%88' -o /tmp/konton.html)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(curl -sS -L --compressed --ssl-no-revoke --max-time 40 -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36\" -H \"Accept-Language: ja\" 'https://wikiwiki.jp/chunithmwiki/%E6%B7%B7%E6%B2%8C%E3%82%92%E8%B6%8A%E3%81%88%E3%81%97%E6%88%91%E3%82%89%E3%81%8C%E7%A5%9E%E8%81%96%E3%81%AA%E3%82%8B%E8%AA%BF%E5%BE%8B%E4%B8%BB%E3%82%92%E8%AD%98%E3%81%88%E3%82%88' -o /tmp/konton.html)",
+      "Bash(curl -sS -L --compressed --ssl-no-revoke --max-time 40 -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36' -H 'Accept-Language: ja' https://wikiwiki.jp/chunithmwiki/%E6%B7%B7%E6%B2%8C%E3%82%92%E8%B6%8A%E3%81%88%E3%81%97%E6%88%91%E3%82%89%E3%81%8C%E7%A5%9E%E8%81%96%E3%81%AA%E3%82%8B%E8%AA%BF%E5%BE%8B%E4%B8%BB%E3%82%92%E8%AD%98%E3%81%88%E3%82%88 -o /tmp/konton.html)",
+      "Read(//tmp/**)",
+      "Bash(curl --version)"
+    ]
+  }
+}

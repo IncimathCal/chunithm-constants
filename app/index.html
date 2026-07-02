@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHUNITHM 定数时光机</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>CHUNITHM 定数时光机
+      <small>定数变迁查询 · 数据截至 X-VERSE-X (2026-07-01)，MATE 暂未纳入</small>
+    </h1>
+  </header>
+
+  <!-- ① 时间轴 -->
+  <div id="timeline">
+    <div id="genbands"></div>
+    <div id="tlctrl">
+      <input type="date" id="dateinput" min="2015-07-16" max="2026-07-01">
+      <button id="prevday" title="前一天">◀</button>
+      <button id="nextday" title="后一天">▶</button>
+      <button id="playbtn">▶ 播放</button>
+      <button id="todaybtn">⏩ 最新</button>
+      <label><input type="checkbox" id="snap"> 代际吸附</label>
+      <span class="legend">拖动滑块/单击色带/输入日期即可查看当天的定数表</span>
+    </div>
+  </div>
+
+  <!-- ② 状态条 -->
+  <div id="statusbar"></div>
+
+  <!-- ③④ 主区 -->
+  <div id="main">
+    <aside id="filters">
+      <div class="fgroup"><b>难度</b>
+        <label><input type="checkbox" id="f-exp"> EXPERT</label>
+        <label><input type="checkbox" id="f-mas"> MASTER</label>
+        <label><input type="checkbox" id="f-ult"> ULTIMA</label>
+      </div>
+      <div class="fgroup"><b>定数区间</b>
+        <input type="number" id="f-min" value="1" min="1" max="16" step="0.1">
+        ～ <input type="number" id="f-max" value="16" min="1" max="16" step="0.1">
+      </div>
+      <div class="fgroup"><b>关键词</b> <input type="search" id="f-search" placeholder="曲名…"></div>
+      <div class="fgroup"><b>状态</b>
+        <select id="f-status">
+          <option value="all">全部</option>
+          <option value="active">仅现行</option>
+          <option value="delisted">仅下架</option>
+        </select>
+      </div>
+      <div class="fgroup"><label><input type="checkbox" id="f-changed"> 只看本代变动</label></div>
+      <div class="fgroup"><b>排序</b>
+        <select id="f-sort">
+          <option value="primary-desc" selected>主难度 ↓</option>
+          <option value="primary-asc">主难度 ↑</option>
+          <option value="mas-desc">MAS 定数 ↓</option>
+          <option value="mas-asc">MAS 定数 ↑</option>
+          <option value="name">曲名</option>
+          <option value="release">追加日</option>
+        </select>
+      </div>
+      <div class="fgroup" id="missing-note"></div>
+    </aside>
+
+    <section id="listwrap">
+      <div id="listheader">
+        <div class="c-title" data-col="title">曲名</div>
+        <div class="c-exp" data-col="EXP">EXP</div>
+        <div class="c-mas" data-col="MAS">MAS</div>
+        <div class="c-ult" data-col="ULT">ULT</div>
+        <div class="c-trail">MAS 变迁轨迹</div>
+        <div class="c-wiki">wiki</div>
+      </div>
+      <div id="listbody"></div>
+    </section>
+  </div>
+
+  <div id="tooltip"></div>
+  <div id="copied">已复制</div>
+</div>
+<script src="gens.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

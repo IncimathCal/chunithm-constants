@@ -1,8 +1,8 @@
 "use strict";
 const DATA = window.APP_DATA || [];
-const GENS = (window.GENS || []).filter(g => g.start <= "2026-07-01"); // 排除 MATE
+const GENS = window.GENS || [];
 const MIN_DATE = GENS[0].start;
-const MAX_DATE = "2026-07-01";                       // 数据锚点 = X-VERSE-X 末
+const MAX_DATE = "2026-09-04";                       // 数据锚点 = arcade-songs 快照日
 const GEN_BY_DATE = (() => {                         // 预排序，便于 genAtDate
   const a = GENS.slice().sort((x, y) => x.start < y.start ? -1 : 1);
   return a;
@@ -148,7 +148,7 @@ function buildBands(){
   for (const g of GEN_BY_DATE){
     const dur = daysBetween(g.start, g.end || MAX_DATE);
     const b = document.createElement("div");
-    b.className = "band" + (g.short==="MATE"?" outscope":"");
+    b.className = "band";
     b.style.flexGrow = Math.max(1, dur);
     b.style.flexBasis = "0";
     b.style.background = g.color;
@@ -236,7 +236,7 @@ function togglePlay(){
 $("missing-note").id = "missing-note";
 const _total = DATA.length;
 const _withHist = DATA.filter(s => s.charts && Object.keys(s.charts).length).length;
-$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。 <b>v0702b</b>`;
+$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。 <b>v0909</b>`;
 buildBands();
 setupEvents();
 state.snap = $("snap").checked;

@@ -136,6 +136,7 @@ function innerRow(s, listGen){
     ${diffCell(s,"EXP",d,listGen)}${diffCell(s,"MAS",d,listGen)}${diffCell(s,"ULT",d,listGen)}
     <div class="c-trail" data-full="${esc(trailStr(s,'MAS',d))}">${esc(trailStr(s,'MAS',d))}</div>
     <div class="c-wiki">${s.wiki_url?`<a href="${esc(s.wiki_url)}" target="_blank" rel="noopener">🔗</a>`:""}</div>
+    <div class="c-sdvx">${s.sdvx_id?`<a href="https://sdvx.in/chunithm/_/viewer.php?id=${encodeURIComponent(s.sdvx_id)}&amp;diff=${s.sdvx_diff||"mst"}" target="_blank" rel="noopener" title="谱面平面图(${s.sdvx_diff==="ult"?"ULT":"MAS"})">🎼</a>`:""}</div>
   </div>`;
 }
 
@@ -236,7 +237,7 @@ function togglePlay(){
 $("missing-note").id = "missing-note";
 const _total = DATA.length;
 const _withHist = DATA.filter(s => s.charts && Object.keys(s.charts).length).length;
-$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。 <b>v1112</b>`;
+$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。 <b>v1113</b>`;
 buildBands();
 setupEvents();
 state.snap = $("snap").checked;

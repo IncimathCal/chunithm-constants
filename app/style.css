@@ -27,7 +27,7 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
 #missing-note { font-size:11px; color:#a55; }
 
 #listwrap { flex:1; min-width:0; }
-#listheader, .row { display:grid; grid-template-columns: minmax(180px,2.6fr) 62px 62px 62px minmax(120px,1.4fr) 40px; align-items:center; }
+#listheader, .row { display:grid; grid-template-columns: minmax(180px,2.6fr) 62px 62px 62px minmax(120px,1.4fr) 40px 46px; align-items:center; }
 #listheader { position:sticky; top:0; background:#ececf2; border-bottom:2px solid #bbb; font-size:11px; font-weight:bold; color:#445; z-index:2; }
 #listheader>div { padding:5px 6px; }
 #listheader .c-exp{color:#d92121;} #listheader .c-mas{color:#75a} #listheader .c-ult{color:#1a1a1a}
@@ -39,6 +39,8 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
 .row .c-exp{color:#d92121;} .row .c-mas{color:#75a;font-weight:bold;} .row .c-ult{color:#1a1a1a;}
 .row .c-trail { font-size:10px; color:#888; padding:0 6px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
 .row .c-wiki a { color:#08e; text-decoration:none; }
+.row .c-sdvx { text-align:center; }
+.row .c-sdvx a { color:#08e; text-decoration:none; }
 .row.changed { background:#fff8e0; }
 .row .mark { font-weight:bold; margin-left:4px; }
 .mark.up{color:#0a0;} .mark.down{color:#08c;} .mark.new{color:#e80;}
@@ -58,7 +60,7 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
   .fgroup { margin-bottom: 2px; display: flex; align-items: center; gap: 4px; }
   .fgroup b { margin: 0; white-space: nowrap; }
   #listwrap { width: 100%; }
-  #listheader, .row { min-width: 580px; }  /* 不压缩,窄屏横向滚动看全部列 */
+  #listheader, .row { min-width: 630px; }  /* 不压缩,窄屏横向滚动看全部列 */
   h1 { font-size: 14px; }
   h1 small { display: none; }
   .band .bname { display: none; }

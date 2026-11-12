@@ -2,7 +2,7 @@
 const DATA = window.APP_DATA || [];
 const GENS = window.GENS || [];
 const MIN_DATE = GENS[0].start;
-const MAX_DATE = "2026-09-04";                       // 数据锚点 = arcade-songs 快照日
+const MAX_DATE = "2026-10-31";                       // 数据锚点 = arcade-songs 快照日
 const GEN_BY_DATE = (() => {                         // 预排序，便于 genAtDate
   const a = GENS.slice().sort((x, y) => x.start < y.start ? -1 : 1);
   return a;

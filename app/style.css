@@ -38,6 +38,7 @@ input[type=date],input[type=number],input[type=search],select { padding:3px 5px;
 .row .c-exp,.row .c-mas,.row .c-ult { text-align:left; padding-left:8px; font-variant-numeric:tabular-nums; }
 .row .c-exp{color:#d92121;} .row .c-mas{color:#75a;font-weight:bold;} .row .c-ult{color:#1a1a1a;}
 .row .c-trail { font-size:10px; color:#888; padding:0 6px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.gap-note { color:#c88; }
 .row .c-wiki a { color:#08e; text-decoration:none; }
 .row .c-sdvx { text-align:center; }
 .row .c-sdvx a { color:#08e; text-decoration:none; }

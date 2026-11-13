@@ -44,6 +44,8 @@ function availableAt(song, date){
   const r = song.releaseDate || MIN_DATE;
   if (r > date) return false;
   if (song.endDate && date > song.endDate) return false;
+  if (song.gaps) for (const g of song.gaps)            // 下架→再配信段: [停止日, 再配信日)
+    if (date >= g[0] && date < g[1]) return false;
   return true;
 }
 function diffChange(song, diff, gen){
@@ -127,14 +129,25 @@ function diffCell(s, diff, d, gen){
   const mark = ch ? ` <span class="mark ${ch}">${ch==="up"?"▲":ch==="down"?"▼":"★"}</span>` : "";
   return `<div class="c-${diff.toLowerCase()}">${c==null?`<span class="const-null">—</span>`:c.toFixed(1)}${mark}</div>`;
 }
+function gapNoteShort(s){
+  // 曾下架标记(短版入单元格): 多段标 ×N
+  if (!s.gaps || !s.gaps.length) return "";
+  return ` <span class="gap-note">⏸曾下架${s.gaps.length>1?"×"+s.gaps.length:""}</span>`;
+}
+function gapNoteFull(s){
+  // 悬浮提示版: 带具体日期段
+  if (!s.gaps || !s.gaps.length) return "";
+  return ` ⏸曾下架 ${s.gaps.map(g=>`${g[0].replaceAll("-","/") }～${g[1].replaceAll("-","/")}`).join("、")}`;
+}
 function innerRow(s, listGen){
   const d=state.date;
   const changed = rowChanged(s, listGen);
   const cls=["row", s.status==="delisted"?"delisted":"", changed?"changed":""].join(" ").trim();
+  const trail = trailStr(s,'MAS',d) + gapNoteShort(s);
   return `<div class="${cls}">
     <div class="c-title" data-copy="${esc(s.title)}" data-full="${esc(s.title)}">${esc(s.title)}</div>
     ${diffCell(s,"EXP",d,listGen)}${diffCell(s,"MAS",d,listGen)}${diffCell(s,"ULT",d,listGen)}
-    <div class="c-trail" data-full="${esc(trailStr(s,'MAS',d))}">${esc(trailStr(s,'MAS',d))}</div>
+    <div class="c-trail" data-full="${esc(trailStr(s,'MAS',d) + gapNoteFull(s))}">${trail}</div>
     <div class="c-wiki">${s.wiki_url?`<a href="${esc(s.wiki_url)}" target="_blank" rel="noopener">🔗</a>`:""}</div>
     <div class="c-sdvx">${s.sdvx_id?`<a href="https://sdvx.in/chunithm/_/viewer.php?id=${encodeURIComponent(s.sdvx_id)}&amp;diff=${s.sdvx_diff||"mst"}" target="_blank" rel="noopener" title="谱面平面图(${s.sdvx_diff==="ult"?"ULT":"MAS"})">🎼</a>`:""}</div>
   </div>`;
@@ -237,7 +250,7 @@ function togglePlay(){
 $("missing-note").id = "missing-note";
 const _total = DATA.length;
 const _withHist = DATA.filter(s => s.charts && Object.keys(s.charts).length).length;
-$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。 <b>v1113c</b>`;
+$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。 <b>v1113d</b>`;
 buildBands();
 setupEvents();
 state.snap = $("snap").checked;

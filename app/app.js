@@ -237,7 +237,7 @@ function togglePlay(){
 $("missing-note").id = "missing-note";
 const _total = DATA.length;
 const _withHist = DATA.filter(s => s.charts && Object.keys(s.charts).length).length;
-$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。 <b>v1113b</b>`;
+$("missing-note").innerHTML = `数据：${_total} 首，${_withHist} 有完整历史。 <b>v1113c</b>`;
 buildBands();
 setupEvents();
 state.snap = $("snap").checked;
